@@ -1,11 +1,16 @@
-import { FeaturesSection, HeroSection, Navbar } from './components';
+import { Footer, Navbar } from './components';
+import { DownloadSection, FaqSection, FeaturesSection, HeroSection, NewsletterSection } from './sections';
 
 export const BookmarkPage = () => {
 	return (
-		<div>
+		<>
 			<Navbar />
 			<HeroSection />
-            <FeaturesSection/>
-		</div>
+			<FeaturesSection />
+			<DownloadSection />
+			<FaqSection />
+			<NewsletterSection />
+			<Footer />
+		</>
 	);
 };

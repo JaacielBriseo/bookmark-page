@@ -1,15 +1,19 @@
-import bookmark from '../assets/logo-bookmark.svg';
+import { useState } from 'react';
+import { bookmark, bookmarkLight } from '../assets';
+import { HamburgerButton, MobileMenu } from './';
+
 export const Navbar = () => {
+	const [isOpen, setIsOpen] = useState(false);
+
+	const toggleMobileMenu = () => {
+		setIsOpen(!isOpen);
+	};
 	return (
 		<nav className='container relative mx-auto p-6'>
-			{/* Flex containre for nav items */}
-
 			<div className='flex items-center justify-between space-x-20 my-6'>
-				{/* Logo */}
 				<div className='z-30'>
-					<img src={bookmark} alt='bookmark' />
+					<img src={isOpen ? bookmarkLight : bookmark} alt='bookmark' />
 				</div>
-				{/* Menu items */}
 				<div className='hidden items-center space-x-10 uppercase text-grayishBlue md:flex'>
 					<a href='#features' className='tracking-widest hover:text-softRed'>
 						Features
@@ -27,7 +31,9 @@ export const Navbar = () => {
 						LOGIN
 					</a>
 				</div>
+				<HamburgerButton isOpen={isOpen} toggleMobileMenu={toggleMobileMenu} />
 			</div>
+			<MobileMenu isOpen={isOpen} />
 		</nav>
 	);
 };
